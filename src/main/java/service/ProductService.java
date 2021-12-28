@@ -1,24 +1,23 @@
 package service;
 
+import dao.ProductDao;
 import model.Product;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductService {
-    public static ArrayList<Product> products = new ArrayList<>();
+    public static List<Product> products = ProductDao.getAllProduct();
 
-    static{
-        products.add(new Product(1,"iphone 11", "https://www.xtmobile.vn/vnt_upload/product/08_2019/thumbs/(600x600)_crop_600_iphone_11_pro_max_den_xtmobile.jpg", 600));
-        products.add(new Product(2,"iphone 12", "https://img.websosanh.vn/v2/users/root_product/images/dien-thoai-apple-iphone-11-pro/lspfo5py7r1bv.jpg?compress=85", 800));
-        products.add(new Product(3,"iphone 13", "https://icdn.dantri.com.vn/thumb_w/640/2020/12/14/iphone-11-pro-1-1607887211166.jpeg", 900));
-    }
 
     public void create(Product product){
-        products.add(product);
+        ProductDao.saveProduct(product);
+        products = ProductDao.getAllProduct();
     }
 
     public void delete(int index){
-        products.remove(index);
+        ProductDao.deleteProduct(products.get(index).getId());
+        products = ProductDao.getAllProduct();
     }
 
     public void edit(int index, Product product){
