@@ -1,12 +1,18 @@
-model/Product.java
- model.Product
 dao/ConnectMySql.java
  dao.ConnectMySql
+dao/CategoryDao.java
+ dao.CategoryDao
 controller/ShowProductServlet.java
  controller.ShowProductServlet
-controller/ProductServlet.java
- controller.ProductServlet
-dao/ProductDao.java
- dao.ProductDao
 service/ProductService.java
  service.ProductService
+model/Category.java
+ model.Category
+model/Product.java
+ model.Product
+dao/ProductDao.java
+ dao.ProductDao
+controller/ProductServlet.java
+ controller.ProductServlet
+service/CategoryService.java
+ service.CategoryService

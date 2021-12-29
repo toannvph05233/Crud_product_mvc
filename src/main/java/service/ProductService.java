@@ -1,6 +1,8 @@
 package service;
 
+import dao.CategoryDao;
 import dao.ProductDao;
+import model.Category;
 import model.Product;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class ProductService {
         ProductDao.saveProduct(product);
         products = ProductDao.getAllProduct();
     }
+
 
     public void delete(int index){
         ProductDao.deleteProduct(products.get(index).getId());

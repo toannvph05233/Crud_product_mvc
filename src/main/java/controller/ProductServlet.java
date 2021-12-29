@@ -1,6 +1,7 @@
 package controller;
 
 import model.Product;
+import service.CategoryService;
 import service.ProductService;
 
 import javax.servlet.RequestDispatcher;
@@ -71,10 +72,11 @@ public class ProductServlet extends HttpServlet {
 
     public void createProduct(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
+        int categoriesId = Integer.parseInt(request.getParameter("categoriesId"));
         String name = request.getParameter("name");
         String img = request.getParameter("img");
         double price = Double.parseDouble(request.getParameter("price"));
-        productService.create(new Product(id, name, img, price));
+        productService.create(new Product(id, name, img, price,categoriesId));
         try {
             response.sendRedirect("/product");
         } catch (IOException e) {
@@ -84,6 +86,7 @@ public class ProductServlet extends HttpServlet {
 
 
     public void showCreateProduct(HttpServletRequest request, HttpServletResponse response, RequestDispatcher rd) {
+        request.setAttribute("categories", new CategoryService().getAll());
         rd = request.getRequestDispatcher("/views/createProduct.jsp");
         try {
             rd.forward(request, response);
